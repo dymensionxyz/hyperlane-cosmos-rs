@@ -1,4 +1,167 @@
 // @generated
+/// EventCreateNoopIsm ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateNoopIsm {
+    /// ism_id ...
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    /// owner ...
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventCreateNoopIsm {
+const NAME: &'static str = "EventCreateNoopIsm";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventCreateMerkleRootMultisigIsm ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateMerkleRootMultisigIsm {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, repeated, tag="3")]
+    pub validators: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(uint32, tag="4")]
+    pub threshold: u32,
+}
+impl ::prost::Name for EventCreateMerkleRootMultisigIsm {
+const NAME: &'static str = "EventCreateMerkleRootMultisigIsm";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventCreateMessageIdMultisigIsm ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateMessageIdMultisigIsm {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, repeated, tag="3")]
+    pub validators: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(uint32, tag="4")]
+    pub threshold: u32,
+}
+impl ::prost::Name for EventCreateMessageIdMultisigIsm {
+const NAME: &'static str = "EventCreateMessageIdMultisigIsm";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// DYMENSION: dupe of non raw
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateMessageIdMultisigIsmRaw {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, repeated, tag="3")]
+    pub validators: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    #[prost(uint32, tag="4")]
+    pub threshold: u32,
+}
+impl ::prost::Name for EventCreateMessageIdMultisigIsmRaw {
+const NAME: &'static str = "EventCreateMessageIdMultisigIsmRaw";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventCreateMessageIdMultisigIsm ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventAnnounceStorageLocation {
+    #[prost(string, tag="1")]
+    pub mailbox_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub sender: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub validator: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub storage_location: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventAnnounceStorageLocation {
+const NAME: &'static str = "EventAnnounceStorageLocation";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventSetRoutingIsmDomain ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSetRoutingIsmDomain {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub route_ism_id: ::prost::alloc::string::String,
+    #[prost(uint32, tag="4")]
+    pub route_domain: u32,
+}
+impl ::prost::Name for EventSetRoutingIsmDomain {
+const NAME: &'static str = "EventSetRoutingIsmDomain";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventRemoveRoutingIsmDomain ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventRemoveRoutingIsmDomain {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(uint32, tag="3")]
+    pub route_domain: u32,
+}
+impl ::prost::Name for EventRemoveRoutingIsmDomain {
+const NAME: &'static str = "EventRemoveRoutingIsmDomain";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventRemoveRoutingIsmDomain ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSetRoutingIsm {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub new_owner: ::prost::alloc::string::String,
+    #[prost(bool, tag="4")]
+    pub renounce_ownership: bool,
+}
+impl ::prost::Name for EventSetRoutingIsm {
+const NAME: &'static str = "EventSetRoutingIsm";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// EventCreateMessageIdMultisigIsm ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateRoutingIsm {
+    #[prost(string, tag="1")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventCreateRoutingIsm {
+const NAME: &'static str = "EventCreateRoutingIsm";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
 /// GenesisState defines the 01_interchain_security submodule's genesis state.
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -212,6 +375,34 @@ const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
             }}
+/// DYMENSION
+/// MessageIdMultisigISM has unnecessary code because of it's implicit merkle
+/// tree
+/// (<https://github.com/dymensionxyz/hyperlane-monorepo/blob/00b8642100af822767ceb605bc2627de7ddde610/rust/main/hyperlane-core/src/types/checkpoint.rs#L32-L51>)
+/// Otherwise it's a dupe of the non raw version.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MessageIdMultisigIsmRaw {
+    /// id ...
+    #[prost(string, tag="1")]
+    pub id: ::prost::alloc::string::String,
+    /// owner ...
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    /// validators
+    /// these are 20 byte long ethereum style addresses
+    #[prost(string, repeated, tag="3")]
+    pub validators: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// threshold ...
+    #[prost(uint32, tag="4")]
+    pub threshold: u32,
+}
+impl ::prost::Name for MessageIdMultisigIsmRaw {
+const NAME: &'static str = "MessageIdMultisigISMRaw";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
 /// MerkleRootMultisigISM ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -283,6 +474,40 @@ pub struct MsgCreateMessageIdMultisigIsmResponse {
 }
 impl ::prost::Name for MsgCreateMessageIdMultisigIsmResponse {
 const NAME: &'static str = "MsgCreateMessageIdMultisigIsmResponse";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// DYMENSION: dupe of non raw
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateMessageIdMultisigIsmRaw {
+    /// creator is the message sender.
+    #[prost(string, tag="1")]
+    pub creator: ::prost::alloc::string::String,
+    /// validators
+    /// these are 20 byte long ethereum style addresses
+    #[prost(string, repeated, tag="2")]
+    pub validators: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// threshold ...
+    #[prost(uint32, tag="3")]
+    pub threshold: u32,
+}
+impl ::prost::Name for MsgCreateMessageIdMultisigIsmRaw {
+const NAME: &'static str = "MsgCreateMessageIdMultisigIsmRaw";
+const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)
+            }}
+/// DYMENSION: dupe of non raw
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MsgCreateMessageIdMultisigIsmRawResponse {
+    #[prost(string, tag="1")]
+    pub id: ::prost::alloc::string::String,
+}
+impl ::prost::Name for MsgCreateMessageIdMultisigIsmRawResponse {
+const NAME: &'static str = "MsgCreateMessageIdMultisigIsmRawResponse";
 const PACKAGE: &'static str = "hyperlane.core.interchain_security.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.interchain_security.v1.{}", Self::NAME)

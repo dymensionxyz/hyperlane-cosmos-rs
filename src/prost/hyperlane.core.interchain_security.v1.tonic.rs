@@ -660,6 +660,36 @@ pub mod msg_client {
                 );
             self.inner.unary(req, path, codec).await
         }
+        pub async fn create_message_id_multisig_ism_raw(
+            &mut self,
+            request: impl tonic::IntoRequest<super::MsgCreateMessageIdMultisigIsmRaw>,
+        ) -> std::result::Result<
+            tonic::Response<super::MsgCreateMessageIdMultisigIsmRawResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/hyperlane.core.interchain_security.v1.Msg/CreateMessageIdMultisigIsmRaw",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(
+                    GrpcMethod::new(
+                        "hyperlane.core.interchain_security.v1.Msg",
+                        "CreateMessageIdMultisigIsmRaw",
+                    ),
+                );
+            self.inner.unary(req, path, codec).await
+        }
         pub async fn create_merkle_root_multisig_ism(
             &mut self,
             request: impl tonic::IntoRequest<super::MsgCreateMerkleRootMultisigIsm>,
@@ -886,6 +916,13 @@ pub mod msg_server {
             tonic::Response<super::MsgCreateMessageIdMultisigIsmResponse>,
             tonic::Status,
         >;
+        async fn create_message_id_multisig_ism_raw(
+            &self,
+            request: tonic::Request<super::MsgCreateMessageIdMultisigIsmRaw>,
+        ) -> std::result::Result<
+            tonic::Response<super::MsgCreateMessageIdMultisigIsmRawResponse>,
+            tonic::Status,
+        >;
         async fn create_merkle_root_multisig_ism(
             &self,
             request: tonic::Request<super::MsgCreateMerkleRootMultisigIsm>,
@@ -1046,6 +1083,55 @@ pub mod msg_server {
                     let fut = async move {
                         let inner = inner.0;
                         let method = CreateMessageIdMultisigIsmSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/hyperlane.core.interchain_security.v1.Msg/CreateMessageIdMultisigIsmRaw" => {
+                    #[allow(non_camel_case_types)]
+                    struct CreateMessageIdMultisigIsmRawSvc<T: Msg>(pub Arc<T>);
+                    impl<
+                        T: Msg,
+                    > tonic::server::UnaryService<
+                        super::MsgCreateMessageIdMultisigIsmRaw,
+                    > for CreateMessageIdMultisigIsmRawSvc<T> {
+                        type Response = super::MsgCreateMessageIdMultisigIsmRawResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<
+                                super::MsgCreateMessageIdMultisigIsmRaw,
+                            >,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                (*inner).create_message_id_multisig_ism_raw(request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = CreateMessageIdMultisigIsmRawSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(

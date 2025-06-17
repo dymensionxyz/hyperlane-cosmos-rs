@@ -30,11 +30,17 @@ VOLUME /app/prost
 ENTRYPOINT []
 
 # Use shell form of CMD
-CMD ["/bin/sh", "-c", "git clone https://github.com/bcp-innovations/hyperlane-cosmos.git && \
+CMD ["/bin/sh", "-c", "\
+    git clone --branch main-dym --single-branch https://github.com/dymensionxyz/hyperlane-cosmos.git && \
     cp -rf hyperlane-cosmos/proto/* ./ && \
     rm -rf hyperlane-cosmos && \
+\
+    # pull x/kas protos
+    git clone https://github.com/dymensionxyz/dymension.git && \
+    mkdir -p dymensionxyz/dymension && \
+    cp -rf dymension/proto/dymensionxyz/dymension/kas ./dymensionxyz/dymension/ && \
+    rm -rf dymension && \
+\
     buf generate --include-imports && \
-    rm -rf prost/cosmos* && \
-    rm -rf prost/amino* && \
-    rm -rf prost/gogo* && \
-    rm -rf prost/google*"]
+    rm -rf prost/cosmos* prost/amino* prost/gogo* prost/google* \
+"]

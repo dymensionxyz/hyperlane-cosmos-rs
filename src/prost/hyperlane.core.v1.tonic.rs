@@ -209,6 +209,106 @@ pub mod query_client {
                 .insert(GrpcMethod::new("hyperlane.core.v1.Query", "VerifyDryRun"));
             self.inner.unary(req, path, codec).await
         }
+        pub async fn registered_is_ms(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryRegisteredIsMs>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryRegisteredIsMsResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/hyperlane.core.v1.Query/RegisteredISMs",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(GrpcMethod::new("hyperlane.core.v1.Query", "RegisteredISMs"));
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn registered_hooks(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryRegisteredHooks>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryRegisteredHooksResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/hyperlane.core.v1.Query/RegisteredHooks",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(GrpcMethod::new("hyperlane.core.v1.Query", "RegisteredHooks"));
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn registered_apps(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryRegisteredApps>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryRegisteredAppsResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/hyperlane.core.v1.Query/RegisteredApps",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(GrpcMethod::new("hyperlane.core.v1.Query", "RegisteredApps"));
+            self.inner.unary(req, path, codec).await
+        }
+        pub async fn message_id(
+            &mut self,
+            request: impl tonic::IntoRequest<super::QueryMessageIdRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryMessageIdResponse>,
+            tonic::Status,
+        > {
+            self.inner
+                .ready()
+                .await
+                .map_err(|e| {
+                    tonic::Status::new(
+                        tonic::Code::Unknown,
+                        format!("Service was not ready: {}", e.into()),
+                    )
+                })?;
+            let codec = tonic::codec::ProstCodec::default();
+            let path = http::uri::PathAndQuery::from_static(
+                "/hyperlane.core.v1.Query/MessageID",
+            );
+            let mut req = request.into_request();
+            req.extensions_mut()
+                .insert(GrpcMethod::new("hyperlane.core.v1.Query", "MessageID"));
+            self.inner.unary(req, path, codec).await
+        }
     }
 }
 /// Generated server implementations.
@@ -251,6 +351,34 @@ pub mod query_server {
             request: tonic::Request<super::QueryVerifyDryRunRequest>,
         ) -> std::result::Result<
             tonic::Response<super::QueryVerifyDryRunResponse>,
+            tonic::Status,
+        >;
+        async fn registered_is_ms(
+            &self,
+            request: tonic::Request<super::QueryRegisteredIsMs>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryRegisteredIsMsResponse>,
+            tonic::Status,
+        >;
+        async fn registered_hooks(
+            &self,
+            request: tonic::Request<super::QueryRegisteredHooks>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryRegisteredHooksResponse>,
+            tonic::Status,
+        >;
+        async fn registered_apps(
+            &self,
+            request: tonic::Request<super::QueryRegisteredApps>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryRegisteredAppsResponse>,
+            tonic::Status,
+        >;
+        async fn message_id(
+            &self,
+            request: tonic::Request<super::QueryMessageIdRequest>,
+        ) -> std::result::Result<
+            tonic::Response<super::QueryMessageIdResponse>,
             tonic::Status,
         >;
     }
@@ -542,6 +670,188 @@ pub mod query_server {
                     let fut = async move {
                         let inner = inner.0;
                         let method = VerifyDryRunSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/hyperlane.core.v1.Query/RegisteredISMs" => {
+                    #[allow(non_camel_case_types)]
+                    struct RegisteredISMsSvc<T: Query>(pub Arc<T>);
+                    impl<
+                        T: Query,
+                    > tonic::server::UnaryService<super::QueryRegisteredIsMs>
+                    for RegisteredISMsSvc<T> {
+                        type Response = super::QueryRegisteredIsMsResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::QueryRegisteredIsMs>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                (*inner).registered_is_ms(request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = RegisteredISMsSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/hyperlane.core.v1.Query/RegisteredHooks" => {
+                    #[allow(non_camel_case_types)]
+                    struct RegisteredHooksSvc<T: Query>(pub Arc<T>);
+                    impl<
+                        T: Query,
+                    > tonic::server::UnaryService<super::QueryRegisteredHooks>
+                    for RegisteredHooksSvc<T> {
+                        type Response = super::QueryRegisteredHooksResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::QueryRegisteredHooks>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                (*inner).registered_hooks(request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = RegisteredHooksSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/hyperlane.core.v1.Query/RegisteredApps" => {
+                    #[allow(non_camel_case_types)]
+                    struct RegisteredAppsSvc<T: Query>(pub Arc<T>);
+                    impl<
+                        T: Query,
+                    > tonic::server::UnaryService<super::QueryRegisteredApps>
+                    for RegisteredAppsSvc<T> {
+                        type Response = super::QueryRegisteredAppsResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::QueryRegisteredApps>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move {
+                                (*inner).registered_apps(request).await
+                            };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = RegisteredAppsSvc(inner);
+                        let codec = tonic::codec::ProstCodec::default();
+                        let mut grpc = tonic::server::Grpc::new(codec)
+                            .apply_compression_config(
+                                accept_compression_encodings,
+                                send_compression_encodings,
+                            )
+                            .apply_max_message_size_config(
+                                max_decoding_message_size,
+                                max_encoding_message_size,
+                            );
+                        let res = grpc.unary(method, req).await;
+                        Ok(res)
+                    };
+                    Box::pin(fut)
+                }
+                "/hyperlane.core.v1.Query/MessageID" => {
+                    #[allow(non_camel_case_types)]
+                    struct MessageIDSvc<T: Query>(pub Arc<T>);
+                    impl<
+                        T: Query,
+                    > tonic::server::UnaryService<super::QueryMessageIdRequest>
+                    for MessageIDSvc<T> {
+                        type Response = super::QueryMessageIdResponse;
+                        type Future = BoxFuture<
+                            tonic::Response<Self::Response>,
+                            tonic::Status,
+                        >;
+                        fn call(
+                            &mut self,
+                            request: tonic::Request<super::QueryMessageIdRequest>,
+                        ) -> Self::Future {
+                            let inner = Arc::clone(&self.0);
+                            let fut = async move { (*inner).message_id(request).await };
+                            Box::pin(fut)
+                        }
+                    }
+                    let accept_compression_encodings = self.accept_compression_encodings;
+                    let send_compression_encodings = self.send_compression_encodings;
+                    let max_decoding_message_size = self.max_decoding_message_size;
+                    let max_encoding_message_size = self.max_encoding_message_size;
+                    let inner = self.inner.clone();
+                    let fut = async move {
+                        let inner = inner.0;
+                        let method = MessageIDSvc(inner);
                         let codec = tonic::codec::ProstCodec::default();
                         let mut grpc = tonic::server::Grpc::new(codec)
                             .apply_compression_config(
