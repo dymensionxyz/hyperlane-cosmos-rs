@@ -1,15 +1,139 @@
 // @generated
-/// RemoteTransfer ...
+/// EventCreateSyntheticToken ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct RemoteTransfer {
-    #[prost(uint32, tag="1")]
-    pub destination_domain: u32,
+pub struct EventCreateSyntheticToken {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
-    pub recipient_address: ::prost::alloc::string::String,
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub origin_mailbox: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub origin_denom: ::prost::alloc::string::String,
 }
-impl ::prost::Name for RemoteTransfer {
-const NAME: &'static str = "RemoteTransfer";
+impl ::prost::Name for EventCreateSyntheticToken {
+const NAME: &'static str = "EventCreateSyntheticToken";
+const PACKAGE: &'static str = "hyperlane.warp.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
+            }}
+/// EventCreateCollateralToken ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateCollateralToken {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub origin_mailbox: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub origin_denom: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventCreateCollateralToken {
+const NAME: &'static str = "EventCreateCollateralToken";
+const PACKAGE: &'static str = "hyperlane.warp.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
+            }}
+/// EventSetToken ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSetToken {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub ism_id: ::prost::alloc::string::String,
+    #[prost(string, tag="4")]
+    pub new_owner: ::prost::alloc::string::String,
+    #[prost(bool, tag="5")]
+    pub renounce_ownership: bool,
+}
+impl ::prost::Name for EventSetToken {
+const NAME: &'static str = "EventSetToken";
+const PACKAGE: &'static str = "hyperlane.warp.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
+            }}
+/// EventEnrollRemoteRouter ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventEnrollRemoteRouter {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(uint32, tag="3")]
+    pub receiver_domain: u32,
+    #[prost(string, tag="4")]
+    pub receiver_contract: ::prost::alloc::string::String,
+    #[prost(string, tag="5")]
+    pub gas: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventEnrollRemoteRouter {
+const NAME: &'static str = "EventEnrollRemoteRouter";
+const PACKAGE: &'static str = "hyperlane.warp.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
+            }}
+/// EventUnrollRemoteRouter ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventUnrollRemoteRouter {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(uint32, tag="3")]
+    pub receiver_domain: u32,
+}
+impl ::prost::Name for EventUnrollRemoteRouter {
+const NAME: &'static str = "EventUnrollRemoteRouter";
+const PACKAGE: &'static str = "hyperlane.warp.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
+            }}
+/// EventSendRemoteTransfer ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSendRemoteTransfer {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub sender: ::prost::alloc::string::String,
+    #[prost(uint32, tag="3")]
+    pub destination_domain: u32,
+    #[prost(string, tag="4")]
+    pub recipient: ::prost::alloc::string::String,
+    #[prost(string, tag="5")]
+    pub amount: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventSendRemoteTransfer {
+const NAME: &'static str = "EventSendRemoteTransfer";
+const PACKAGE: &'static str = "hyperlane.warp.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
+            }}
+/// EventReceiveRemoteTransfer ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventReceiveRemoteTransfer {
+    #[prost(string, tag="1")]
+    pub token_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub sender: ::prost::alloc::string::String,
+    #[prost(uint32, tag="3")]
+    pub origin_domain: u32,
+    #[prost(string, tag="4")]
+    pub recipient: ::prost::alloc::string::String,
+    #[prost(string, tag="5")]
+    pub amount: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventReceiveRemoteTransfer {
+const NAME: &'static str = "EventReceiveRemoteTransfer";
 const PACKAGE: &'static str = "hyperlane.warp.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.warp.v1.{}", Self::NAME)
@@ -370,6 +494,8 @@ pub struct MsgSetToken {
     pub new_owner: ::prost::alloc::string::String,
     #[prost(string, tag="4")]
     pub ism_id: ::prost::alloc::string::String,
+    #[prost(bool, tag="7")]
+    pub renounce_ownership: bool,
 }
 impl ::prost::Name for MsgSetToken {
 const NAME: &'static str = "MsgSetToken";

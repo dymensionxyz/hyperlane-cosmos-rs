@@ -26,3 +26,11 @@ pub mod hyperlane {
         }
     }
 }
+
+pub mod dymensionxyz {
+    pub mod dymension {
+        pub mod kas {
+            include!("prost/dymensionxyz.dymension.kas.rs");
+        }
+    }
+}

@@ -1,7 +1,14 @@
 # Hyperlane Cosmos Rust
 
-This package provides proto and gRPC definitions to interact with the [Hyperlane Cosmos Module](http://github.com/bcp-innovations/hyperlane-cosmos).
-This repository builds upon of [cosmrs](https://github.com/cosmos/cosmos-rust), using their workflow for Hyperlane-specific proto builds.
+This package provides proto and gRPC definitions to interact with the [Hyperlane Cosmos Module](https://github.com/dymensionxyz/hyperlane-cosmos) and Dymension's [x/kas module](https://github.com/dymensionxyz/dymension).
+
+This repository builds upon [cosmrs](https://github.com/cosmos/cosmos-rust), using their workflow for Hyperlane-specific proto builds.
+
+## Features
+
+- **Hyperlane Core**: Message dispatch and processing capabilities
+- **Hyperlane Warp**: Token bridging functionality  
+- **x/kas**: Dymension's Kaspa escrow module for cross-chain operations
 
 ## Building Proto files from source
 

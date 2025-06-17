@@ -1,11 +1,11 @@
 // @generated
-/// InsertedIntoTree ...
+/// EventCreateMerkleTreeHook ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventCreateMerkleTreeHook {
     /// id ...
     #[prost(string, tag="1")]
-    pub id: ::prost::alloc::string::String,
+    pub merkle_tree_hook_id: ::prost::alloc::string::String,
     /// mailbox_id ...
     #[prost(string, tag="2")]
     pub mailbox_id: ::prost::alloc::string::String,
@@ -18,10 +18,10 @@ const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
             }}
-/// InsertedIntoTree ...
+/// EventInsertedIntoTree ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct InsertedIntoTree {
+pub struct EventInsertedIntoTree {
     /// message_id ...
     #[prost(string, tag="1")]
     pub message_id: ::prost::alloc::string::String,
@@ -32,16 +32,16 @@ pub struct InsertedIntoTree {
     #[prost(string, tag="3")]
     pub merkle_tree_hook_id: ::prost::alloc::string::String,
 }
-impl ::prost::Name for InsertedIntoTree {
-const NAME: &'static str = "InsertedIntoTree";
+impl ::prost::Name for EventInsertedIntoTree {
+const NAME: &'static str = "EventInsertedIntoTree";
 const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
             }}
-/// GasPayment ...
+/// EventGasPayment ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct GasPayment {
+pub struct EventGasPayment {
     /// message_id ...
     #[prost(string, tag="1")]
     pub message_id: ::prost::alloc::string::String,
@@ -58,25 +58,101 @@ pub struct GasPayment {
     #[prost(string, tag="5")]
     pub igp_id: ::prost::alloc::string::String,
 }
-impl ::prost::Name for GasPayment {
-const NAME: &'static str = "GasPayment";
+impl ::prost::Name for EventGasPayment {
+const NAME: &'static str = "EventGasPayment";
 const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
             }}
-/// InsertedIntoTree ...
+/// EventCreateNoopHook ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct EventCreateNoopHook {
     /// id ...
     #[prost(string, tag="1")]
-    pub id: ::prost::alloc::string::String,
+    pub noop_hook_id: ::prost::alloc::string::String,
     /// owner ...
     #[prost(string, tag="2")]
     pub owner: ::prost::alloc::string::String,
 }
 impl ::prost::Name for EventCreateNoopHook {
 const NAME: &'static str = "EventCreateNoopHook";
+const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
+            }}
+/// EventCreateIgp ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateIgp {
+    #[prost(string, tag="1")]
+    pub igp_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub denom: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventCreateIgp {
+const NAME: &'static str = "EventCreateIgp";
+const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
+            }}
+/// EventSetIgp ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSetIgp {
+    #[prost(string, tag="1")]
+    pub igp_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub new_owner: ::prost::alloc::string::String,
+    #[prost(bool, tag="4")]
+    pub renounce_ownership: bool,
+}
+impl ::prost::Name for EventSetIgp {
+const NAME: &'static str = "EventSetIgp";
+const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
+            }}
+/// EventSetDestinationGasConfig ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSetDestinationGasConfig {
+    #[prost(string, tag="1")]
+    pub igp_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(uint32, tag="4")]
+    pub remote_domain: u32,
+    #[prost(string, tag="5")]
+    pub gas_overhead: ::prost::alloc::string::String,
+    #[prost(string, tag="6")]
+    pub gas_price: ::prost::alloc::string::String,
+    #[prost(string, tag="7")]
+    pub token_exchange_rate: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventSetDestinationGasConfig {
+const NAME: &'static str = "EventSetDestinationGasConfig";
+const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
+            }}
+/// EventClaimIgp ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventClaimIgp {
+    #[prost(string, tag="1")]
+    pub igp_id: ::prost::alloc::string::String,
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    #[prost(string, tag="3")]
+    pub amount: ::prost::alloc::string::String,
+}
+impl ::prost::Name for EventClaimIgp {
+const NAME: &'static str = "EventClaimIgp";
 const PACKAGE: &'static str = "hyperlane.core.post_dispatch.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.post_dispatch.v1.{}", Self::NAME)
@@ -547,6 +623,9 @@ pub struct MsgSetIgpOwner {
     /// new_owner
     #[prost(string, tag="3")]
     pub new_owner: ::prost::alloc::string::String,
+    /// renounce_ownership
+    #[prost(bool, tag="4")]
+    pub renounce_ownership: bool,
 }
 impl ::prost::Name for MsgSetIgpOwner {
 const NAME: &'static str = "MsgSetIgpOwner";
