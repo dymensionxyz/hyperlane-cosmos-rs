@@ -1,8 +1,8 @@
 [package]
 name = "hyperlane-cosmos-rs"
-version = "0.1.3"
+version = "0.1.4-dymension-3.2.1"
 authors = ["Jamin Yeates <jamin@hyperlane.xyz>"]
-repository = "https://github.com/bcp-innovations/hyperlane-cosmos-rs"
+repository = "https://github.com/dymensionxyz/hyperlane-cosmos-rs"
 description = "Protobuf stuct defintions for interacting with the Hyperlane Cosmos SDK"
 readme = "README.md"
 categories = ["cryptography", "cryptography::cryptocurrencies", "database"]
