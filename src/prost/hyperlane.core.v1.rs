@@ -1,8 +1,8 @@
 // @generated
-/// Dispatch ...
+/// EventDispatch ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Dispatch {
+pub struct EventDispatch {
     /// origin_mailbox_id ...
     #[prost(string, tag="1")]
     pub origin_mailbox_id: ::prost::alloc::string::String,
@@ -19,16 +19,16 @@ pub struct Dispatch {
     #[prost(string, tag="5")]
     pub message: ::prost::alloc::string::String,
 }
-impl ::prost::Name for Dispatch {
-const NAME: &'static str = "Dispatch";
+impl ::prost::Name for EventDispatch {
+const NAME: &'static str = "EventDispatch";
 const PACKAGE: &'static str = "hyperlane.core.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
             }}
-/// Process ...
+/// EventProcess ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct Process {
+pub struct EventProcess {
     /// origin_mailbox_id ...
     #[prost(string, tag="1")]
     pub origin_mailbox_id: ::prost::alloc::string::String,
@@ -48,8 +48,66 @@ pub struct Process {
     #[prost(string, tag="6")]
     pub message: ::prost::alloc::string::String,
 }
-impl ::prost::Name for Process {
-const NAME: &'static str = "Process";
+impl ::prost::Name for EventProcess {
+const NAME: &'static str = "EventProcess";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// EventCreateMailbox ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventCreateMailbox {
+    /// mailbox_id ...
+    #[prost(string, tag="1")]
+    pub mailbox_id: ::prost::alloc::string::String,
+    /// owner ...
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    /// default_ism ...
+    #[prost(string, tag="3")]
+    pub default_ism: ::prost::alloc::string::String,
+    /// default_hook ...
+    #[prost(string, tag="4")]
+    pub default_hook: ::prost::alloc::string::String,
+    /// required_hook ...
+    #[prost(string, tag="5")]
+    pub required_hook: ::prost::alloc::string::String,
+    /// local_domain ...
+    #[prost(uint32, tag="6")]
+    pub local_domain: u32,
+}
+impl ::prost::Name for EventCreateMailbox {
+const NAME: &'static str = "EventCreateMailbox";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// EventSetMailbox ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct EventSetMailbox {
+    /// mailbox_id ...
+    #[prost(string, tag="1")]
+    pub mailbox_id: ::prost::alloc::string::String,
+    /// owner ...
+    #[prost(string, tag="2")]
+    pub owner: ::prost::alloc::string::String,
+    /// default_ism ...
+    #[prost(string, tag="3")]
+    pub default_ism: ::prost::alloc::string::String,
+    /// default_hook ...
+    #[prost(string, tag="4")]
+    pub default_hook: ::prost::alloc::string::String,
+    /// new_owner ...
+    #[prost(string, tag="5")]
+    pub new_owner: ::prost::alloc::string::String,
+    /// renounce_ownership ...
+    #[prost(bool, tag="6")]
+    pub renounce_ownership: bool,
+}
+impl ::prost::Name for EventSetMailbox {
+const NAME: &'static str = "EventSetMailbox";
 const PACKAGE: &'static str = "hyperlane.core.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
@@ -272,6 +330,108 @@ const PACKAGE: &'static str = "hyperlane.core.v1";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
             }}
+/// QueryRegisteredISMs ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRegisteredIsMs {
+}
+impl ::prost::Name for QueryRegisteredIsMs {
+const NAME: &'static str = "QueryRegisteredISMs";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// QueryRegisteredISMsResponse ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRegisteredIsMsResponse {
+    #[prost(uint32, repeated, tag="1")]
+    pub ids: ::prost::alloc::vec::Vec<u32>,
+}
+impl ::prost::Name for QueryRegisteredIsMsResponse {
+const NAME: &'static str = "QueryRegisteredISMsResponse";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// QueryRegisteredHooks ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRegisteredHooks {
+}
+impl ::prost::Name for QueryRegisteredHooks {
+const NAME: &'static str = "QueryRegisteredHooks";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// QueryRegisteredHooksResponse ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRegisteredHooksResponse {
+    #[prost(uint32, repeated, tag="1")]
+    pub ids: ::prost::alloc::vec::Vec<u32>,
+}
+impl ::prost::Name for QueryRegisteredHooksResponse {
+const NAME: &'static str = "QueryRegisteredHooksResponse";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// QueryRegisteredApps ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRegisteredApps {
+}
+impl ::prost::Name for QueryRegisteredApps {
+const NAME: &'static str = "QueryRegisteredApps";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// QueryRegisteredAppsResponse ...
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryRegisteredAppsResponse {
+    #[prost(uint32, repeated, tag="1")]
+    pub ids: ::prost::alloc::vec::Vec<u32>,
+}
+impl ::prost::Name for QueryRegisteredAppsResponse {
+const NAME: &'static str = "QueryRegisteredAppsResponse";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// QueryMessageIDRequest ...
+///
+/// <messages,ids> should correspond by index
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryMessageIdRequest {
+    /// in raw format
+    #[prost(bytes="vec", repeated, tag="1")]
+    pub messages: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    /// in stringified hex address format
+    #[prost(string, repeated, tag="2")]
+    pub ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for QueryMessageIdRequest {
+const NAME: &'static str = "QueryMessageIDRequest";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
+/// error returned instead if any message does not match the id
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct QueryMessageIdResponse {
+}
+impl ::prost::Name for QueryMessageIdResponse {
+const NAME: &'static str = "QueryMessageIDResponse";
+const PACKAGE: &'static str = "hyperlane.core.v1";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("hyperlane.core.v1.{}", Self::NAME)
+            }}
 /// MsgCreateMailbox ...
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
@@ -332,6 +492,9 @@ pub struct MsgSetMailbox {
     /// new_owner ...
     #[prost(string, tag="6")]
     pub new_owner: ::prost::alloc::string::String,
+    /// renounce_ownership
+    #[prost(bool, tag="7")]
+    pub renounce_ownership: bool,
 }
 impl ::prost::Name for MsgSetMailbox {
 const NAME: &'static str = "MsgSetMailbox";
