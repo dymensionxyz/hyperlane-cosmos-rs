@@ -32,5 +32,26 @@ pub mod dymensionxyz {
         pub mod kas {
             include!("prost/dymensionxyz.dymension.kas.rs");
         }
+        pub mod forward {
+            include!("prost/dymensionxyz.dymension.forward.rs");
+        }
     }
 }
+
+pub mod ibc {
+    pub mod applications {
+        pub mod transfer {
+            pub mod v1 {
+                include!("prost/ibc.applications.transfer.v1.rs");
+            }
+        }
+    }
+    pub mod core {
+        pub mod client {
+            pub mod v1 {
+                include!("prost/ibc.core.client.v1.rs");
+            }
+        }
+    }
+}
+
