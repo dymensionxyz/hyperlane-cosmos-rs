@@ -2,14 +2,14 @@ syntax = "proto3";
 
 package ibc.applications.transfer.v1;
 
-option go_package = "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types";
-
 import "amino/amino.proto";
-import "gogoproto/gogo.proto";
-import "cosmos/msg/v1/msg.proto";
 import "cosmos/base/v1beta1/coin.proto";
-import "ibc/core/client/v1/client.proto";
+import "cosmos/msg/v1/msg.proto";
+import "gogoproto/gogo.proto";
 import "ibc/applications/transfer/v1/transfer.proto";
+import "ibc/core/client/v1/client.proto";
+
+option go_package = "github.com/cosmos/ibc-go/v8/modules/apps/transfer/types";
 
 // Msg defines the ibc/transfer Msg service.
 service Msg {
@@ -26,7 +26,7 @@ service Msg {
 // ICS20 enabled chains. See ICS Spec here:
 // https://github.com/cosmos/ibc/tree/master/spec/app/ics-020-fungible-token-transfer#data-structures
 message MsgTransfer {
-  option (amino.name)           = "cosmos-sdk/MsgTransfer";
+  option (amino.name) = "cosmos-sdk/MsgTransfer";
   option (cosmos.msg.v1.signer) = "sender";
 
   option (gogoproto.goproto_getters) = false;
@@ -36,14 +36,20 @@ message MsgTransfer {
   // the channel by which the packet will be sent
   string source_channel = 2;
   // the tokens to be transferred
-  cosmos.base.v1beta1.Coin token = 3 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  cosmos.base.v1beta1.Coin token = 3 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
   // the sender address
   string sender = 4;
   // the recipient address on the destination chain
   string receiver = 5;
   // Timeout height relative to the current block height.
   // The timeout is disabled when set to 0.
-  ibc.core.client.v1.Height timeout_height = 6 [(gogoproto.nullable) = false, (amino.dont_omitempty) = true];
+  ibc.core.client.v1.Height timeout_height = 6 [
+    (gogoproto.nullable) = false,
+    (amino.dont_omitempty) = true
+  ];
   // Timeout timestamp in absolute nanoseconds since unix epoch.
   // The timeout is disabled when set to 0.
   uint64 timeout_timestamp = 7;
@@ -77,3 +83,12 @@ message MsgUpdateParams {
 // MsgUpdateParamsResponse defines the response structure for executing a
 // MsgUpdateParams message.
 message MsgUpdateParamsResponse {}
+
+message DepositFXG {
+  bytes amount = 1;
+  string tx_id = 2;
+  uint32 utxo_index = 3;
+  string accepting_block_hash = 4;
+  bytes hl_message = 5;
+  string containing_block_hash = 6;
+}
