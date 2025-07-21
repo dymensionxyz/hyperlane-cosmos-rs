@@ -26,12 +26,3 @@ message Params {
   // chain.
   bool receive_enabled = 2;
 }
-
-message DepositFXG {
-  bytes amount = 1;
-  string tx_id = 2;
-  uint32 utxo_index = 3;
-  string accepting_block_hash = 4;
-  bytes hl_message = 5;
-  string containing_block_hash = 6;
-}
