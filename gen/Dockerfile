@@ -23,6 +23,8 @@ RUN apk add --no-cache git openssh-client
 
 COPY buf.gen.yaml ./
 
+COPY dymensionxyz ./
+
 # Create a mount point for the prost directory
 VOLUME /app/prost
 

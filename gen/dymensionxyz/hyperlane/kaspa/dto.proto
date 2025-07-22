@@ -1,0 +1,47 @@
+syntax = "proto3";
+
+package dymensionxyz.hyperlane.kaspa;
+
+message TransactionOutpoint {
+  bytes transaction_id = 1;
+  uint32 index = 2;
+}
+
+enum DepositVersion {
+    DEPOSIT_VERSION_UNSPECIFIED = 0;
+    DEPOSIT_VERSION_1 = 1;
+}
+
+message DepositFXG {
+  DepositVersion version = 1;
+  bytes amount = 2;
+  string tx_id = 3;
+  uint32 utxo_index = 4;
+  string accepting_block_hash = 5;
+  bytes hl_message = 6;
+  string containing_block_hash = 7;
+}
+
+enum WithdrawalVersion {
+  WITHDRAWAL_VERSION_UNSPECIFIED = 0;
+  WITHDRAWAL_VERSION_1 = 1;
+}
+
+message WithdrawFXG {
+  WithdrawalVersion version = 1;
+  bytes pskt_bundle = 2;
+  repeated bytes hyperlane_messages = 3;
+  repeated TransactionOutpoint anchors = 4;
+}
+
+enum ConfirmationVersion {
+  CONFIRMATION_VERSION_UNSPECIFIED = 0;
+  CONFIRMATION_VERSION_1 = 1;
+}
+
+message ConfirmationFXGCache {
+  ConfirmationVersion version = 1;
+  repeated TransactionOutpoint outpoints = 2;
+}
+
+
