@@ -36,6 +36,11 @@ pub mod dymensionxyz {
             include!("prost/dymensionxyz.dymension.forward.rs");
         }
     }
+    pub mod hyperlane {
+        pub mod kaspa {
+            include!("prost/dymensionxyz.hyperlane.kaspa.rs");
+        }
+    }
 }
 
 pub mod ibc {
