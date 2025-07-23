@@ -56,23 +56,11 @@ fn full_name() -> ::prost::alloc::string::String {
             }}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct ConfirmationFxgCache {
-    #[prost(message, repeated, tag="1")]
-    pub outpoints: ::prost::alloc::vec::Vec<super::super::dymension::kas::TransactionOutpoint>,
-}
-impl ::prost::Name for ConfirmationFxgCache {
-const NAME: &'static str = "ConfirmationFXGCache";
-const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
-            }}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfirmationFxg {
     #[prost(enumeration="ConfirmationVersion", tag="1")]
     pub version: i32,
-    #[prost(message, optional, tag="2")]
-    pub cache: ::core::option::Option<ConfirmationFxgCache>,
+    #[prost(message, repeated, tag="2")]
+    pub outpoints: ::prost::alloc::vec::Vec<super::super::dymension::kas::TransactionOutpoint>,
     #[prost(message, optional, tag="3")]
     pub progress_indication: ::core::option::Option<super::super::dymension::kas::ProgressIndication>,
 }
