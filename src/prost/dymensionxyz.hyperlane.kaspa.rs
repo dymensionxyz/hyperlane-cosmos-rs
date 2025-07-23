@@ -39,13 +39,25 @@ fn full_name() -> ::prost::alloc::string::String {
             }}
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
+pub struct HyperlaneMessages {
+    #[prost(bytes="vec", repeated, tag="1")]
+    pub messages: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+}
+impl ::prost::Name for HyperlaneMessages {
+const NAME: &'static str = "HyperlaneMessages";
+const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
+            }}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct WithdrawFxg {
     #[prost(enumeration="WithdrawalVersion", tag="1")]
     pub version: i32,
     #[prost(bytes="vec", tag="2")]
     pub pskt_bundle: ::prost::alloc::vec::Vec<u8>,
-    #[prost(bytes="vec", repeated, tag="3")]
-    pub hyperlane_messages: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
+    #[prost(message, repeated, tag="3")]
+    pub messages: ::prost::alloc::vec::Vec<HyperlaneMessages>,
     #[prost(message, repeated, tag="4")]
     pub anchors: ::prost::alloc::vec::Vec<TransactionOutpoint>,
 }
