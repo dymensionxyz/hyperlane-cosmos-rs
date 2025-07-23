@@ -2,10 +2,7 @@ syntax = "proto3";
 
 package dymensionxyz.hyperlane.kaspa;
 
-message TransactionOutpoint {
-  bytes transaction_id = 1;
-  uint32 index = 2;
-}
+import "dymensionxyz/dymension/kas/d.proto";
 
 enum DepositVersion {
   DEPOSIT_VERSION_UNSPECIFIED = 0;
@@ -33,9 +30,9 @@ message HyperlaneMessages {
 
 message WithdrawFXG {
   WithdrawalVersion version = 1;
-  bytes pskt_bundle = 2;
+  string pskt_bundle = 2; // hex-encoded string due to how serialization is implemented in rusty-kaspa
   repeated HyperlaneMessages messages = 3;
-  repeated TransactionOutpoint anchors = 4;
+  repeated dymensionxyz.dymension.kas.TransactionOutpoint anchors = 4;
 }
 
 enum ConfirmationVersion {
@@ -44,8 +41,11 @@ enum ConfirmationVersion {
 }
 
 message ConfirmationFXGCache {
-  ConfirmationVersion version = 1;
-  repeated TransactionOutpoint outpoints = 2;
+  repeated dymensionxyz.dymension.kas.TransactionOutpoint outpoints = 1;
 }
 
-
+message ConfirmationFXG {
+  ConfirmationVersion version = 1;
+  ConfirmationFXGCache cache = 2;
+  dymensionxyz.dymension.kas.ProgressIndication progress_indication = 3;
+}
