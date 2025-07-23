@@ -8,8 +8,8 @@ message TransactionOutpoint {
 }
 
 enum DepositVersion {
-    DEPOSIT_VERSION_UNSPECIFIED = 0;
-    DEPOSIT_VERSION_1 = 1;
+  DEPOSIT_VERSION_UNSPECIFIED = 0;
+  DEPOSIT_VERSION_1 = 1;
 }
 
 message DepositFXG {
@@ -27,10 +27,14 @@ enum WithdrawalVersion {
   WITHDRAWAL_VERSION_1 = 1;
 }
 
+message HyperlaneMessages {
+  repeated bytes messages = 1;
+}
+
 message WithdrawFXG {
   WithdrawalVersion version = 1;
   bytes pskt_bundle = 2;
-  repeated bytes hyperlane_messages = 3;
+  repeated HyperlaneMessages messages = 3;
   repeated TransactionOutpoint anchors = 4;
 }
 
