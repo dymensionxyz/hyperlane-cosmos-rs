@@ -1,20 +1,6 @@
 // @generated
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
-pub struct TransactionOutpoint {
-    #[prost(bytes="vec", tag="1")]
-    pub transaction_id: ::prost::alloc::vec::Vec<u8>,
-    #[prost(uint32, tag="2")]
-    pub index: u32,
-}
-impl ::prost::Name for TransactionOutpoint {
-const NAME: &'static str = "TransactionOutpoint";
-const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
-fn full_name() -> ::prost::alloc::string::String {
-                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
-            }}
-#[allow(clippy::derive_partial_eq_without_eq)]
-#[derive(Clone, PartialEq, ::prost::Message)]
 pub struct DepositFxg {
     #[prost(enumeration="DepositVersion", tag="1")]
     pub version: i32,
@@ -54,12 +40,13 @@ fn full_name() -> ::prost::alloc::string::String {
 pub struct WithdrawFxg {
     #[prost(enumeration="WithdrawalVersion", tag="1")]
     pub version: i32,
-    #[prost(bytes="vec", tag="2")]
-    pub pskt_bundle: ::prost::alloc::vec::Vec<u8>,
+    /// hex-encoded string due to how serialization is implemented in rusty-kaspa
+    #[prost(string, tag="2")]
+    pub pskt_bundle: ::prost::alloc::string::String,
     #[prost(message, repeated, tag="3")]
     pub messages: ::prost::alloc::vec::Vec<HyperlaneMessages>,
     #[prost(message, repeated, tag="4")]
-    pub anchors: ::prost::alloc::vec::Vec<TransactionOutpoint>,
+    pub anchors: ::prost::alloc::vec::Vec<super::super::dymension::kas::TransactionOutpoint>,
 }
 impl ::prost::Name for WithdrawFxg {
 const NAME: &'static str = "WithdrawFXG";
@@ -70,13 +57,27 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct ConfirmationFxgCache {
-    #[prost(enumeration="ConfirmationVersion", tag="1")]
-    pub version: i32,
-    #[prost(message, repeated, tag="2")]
-    pub outpoints: ::prost::alloc::vec::Vec<TransactionOutpoint>,
+    #[prost(message, repeated, tag="1")]
+    pub outpoints: ::prost::alloc::vec::Vec<super::super::dymension::kas::TransactionOutpoint>,
 }
 impl ::prost::Name for ConfirmationFxgCache {
 const NAME: &'static str = "ConfirmationFXGCache";
+const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
+            }}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct ConfirmationFxg {
+    #[prost(enumeration="ConfirmationVersion", tag="1")]
+    pub version: i32,
+    #[prost(message, optional, tag="2")]
+    pub cache: ::core::option::Option<ConfirmationFxgCache>,
+    #[prost(message, optional, tag="3")]
+    pub progress_indication: ::core::option::Option<super::super::dymension::kas::ProgressIndication>,
+}
+impl ::prost::Name for ConfirmationFxg {
+const NAME: &'static str = "ConfirmationFXG";
 const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
