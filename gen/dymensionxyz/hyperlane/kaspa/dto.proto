@@ -40,12 +40,8 @@ enum ConfirmationVersion {
   CONFIRMATION_VERSION_1 = 1;
 }
 
-message ConfirmationFXGCache {
-  repeated dymensionxyz.dymension.kas.TransactionOutpoint outpoints = 1;
-}
-
 message ConfirmationFXG {
   ConfirmationVersion version = 1;
-  ConfirmationFXGCache cache = 2;
+  repeated dymensionxyz.dymension.kas.TransactionOutpoint outpoints = 2;
   dymensionxyz.dymension.kas.ProgressIndication progress_indication = 3;
 }
