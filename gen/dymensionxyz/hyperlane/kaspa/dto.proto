@@ -47,6 +47,6 @@ message ConfirmationFXG {
 }
 
 message MessageIDs {
-  // array of hex-encoded HL message IDs
-  repeated string message_ids = 1;
+  // array of raw HL message IDs
+  repeated bytes message_ids = 1;
 }

@@ -73,9 +73,9 @@ fn full_name() -> ::prost::alloc::string::String {
 #[allow(clippy::derive_partial_eq_without_eq)]
 #[derive(Clone, PartialEq, ::prost::Message)]
 pub struct MessageIDs {
-    /// array of hex-encoded HL message IDs
-    #[prost(string, repeated, tag="1")]
-    pub message_ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+    /// array of raw HL message IDs
+    #[prost(bytes="vec", repeated, tag="1")]
+    pub message_ids: ::prost::alloc::vec::Vec<::prost::alloc::vec::Vec<u8>>,
 }
 impl ::prost::Name for MessageIDs {
 const NAME: &'static str = "MessageIDs";
