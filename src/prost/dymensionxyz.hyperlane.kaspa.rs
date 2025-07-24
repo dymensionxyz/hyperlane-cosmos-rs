@@ -70,6 +70,19 @@ const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
             }}
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MessageIDs {
+    /// array of hex-encoded HL message IDs
+    #[prost(string, repeated, tag="1")]
+    pub message_ids: ::prost::alloc::vec::Vec<::prost::alloc::string::String>,
+}
+impl ::prost::Name for MessageIDs {
+const NAME: &'static str = "MessageIDs";
+const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
+            }}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum DepositVersion {

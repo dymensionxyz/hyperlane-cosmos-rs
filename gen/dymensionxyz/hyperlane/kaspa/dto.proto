@@ -45,3 +45,8 @@ message ConfirmationFXG {
   repeated dymensionxyz.dymension.kas.TransactionOutpoint outpoints = 2;
   dymensionxyz.dymension.kas.ProgressIndication progress_indication = 3;
 }
+
+message MessageIDs {
+  // array of hex-encoded HL message IDs
+  repeated string message_ids = 1;
+}
