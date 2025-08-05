@@ -3,3 +3,4 @@ services:
     build: .
     volumes:
       - ../src/prost:/app/prost
+      - ./dymensionxyz/dymension/forward/dt.proto:/app/dymensionxyz/dymension/forward/dt.proto

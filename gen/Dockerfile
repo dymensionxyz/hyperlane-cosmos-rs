@@ -23,7 +23,7 @@ RUN apk add --no-cache git openssh-client
 
 COPY buf.gen.yaml ./
 
-COPY dymensionxyz ./
+# Don't copy dymensionxyz here - we'll handle it in the CMD
 
 # Create a mount point for the prost directory
 VOLUME /app/prost
@@ -37,11 +37,20 @@ CMD ["/bin/sh", "-c", "\
     cp -rf hyperlane-cosmos/proto/* ./ && \
     rm -rf hyperlane-cosmos && \
 \
-    # pull x/kas protos
+    # pull cosmos/ics23 dependency for IBC protos
+    git clone --depth 1 https://github.com/cosmos/ics23.git && \
+    mkdir -p cosmos/ics23/v1 && \
+    cp -rf ics23/proto/cosmos/ics23/v1/* ./cosmos/ics23/v1/ && \
+    rm -rf ics23 && \
+\
+    # pull x/kas protos from dymension
     git clone https://github.com/dymensionxyz/dymension.git && \
     mkdir -p dymensionxyz/dymension && \
     cp -rf dymension/proto/dymensionxyz/dymension/kas ./dymensionxyz/dymension/ && \
     rm -rf dymension && \
+\
+    # create forward directory for mounted dt.proto
+    mkdir -p dymensionxyz/dymension/forward && \
 \
     buf generate --include-imports && \
     rm -rf prost/cosmos* prost/amino* prost/gogo* prost/google* \
