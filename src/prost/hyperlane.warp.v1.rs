@@ -401,10 +401,6 @@ pub struct QueryQuoteRemoteTransferRequest {
     pub id: ::prost::alloc::string::String,
     #[prost(string, tag="2")]
     pub destination_domain: ::prost::alloc::string::String,
-    #[prost(string, tag="3")]
-    pub custom_hook_id: ::prost::alloc::string::String,
-    #[prost(string, tag="4")]
-    pub custom_hook_metadata: ::prost::alloc::string::String,
 }
 impl ::prost::Name for QueryQuoteRemoteTransferRequest {
 const NAME: &'static str = "QueryQuoteRemoteTransferRequest";

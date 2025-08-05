@@ -23,8 +23,8 @@ RUN apk add --no-cache git openssh-client
 
 COPY buf.gen.yaml ./
 
-COPY dymensionxyz ./
-COPY ibc ./ibc
+# Copy all proto files
+COPY . ./
 
 # Create a mount point for the prost directory
 VOLUME /app/prost
@@ -34,22 +34,24 @@ ENTRYPOINT []
 
 # Use shell form of CMD
 CMD ["/bin/sh", "-c", "\
-    # Clone both repos first
+    # Save our local proto files
+    cp -rf dymensionxyz /tmp/dymensionxyz_local && \
+    \
+    # Clone hyperlane-cosmos for all proto dependencies
     git clone --branch main-dym --single-branch https://github.com/dymensionxyz/hyperlane-cosmos.git && \
-    git clone https://github.com/dymensionxyz/dymension.git && \
     \
-    # Copy all proto files from hyperlane-cosmos first
+    # Copy all proto dependencies (includes IBC, cosmos, hyperlane, etc.)
     cp -rf hyperlane-cosmos/proto/* ./ && \
+    rm -rf hyperlane-cosmos && \
     \
-    # Then overlay dymension-specific protos
-    mkdir -p dymensionxyz/dymension && \
-    cp -rf dymension/proto/dymensionxyz/dymension/kas ./dymensionxyz/dymension/ && \
-    cp -rf dymension/proto/dymensionxyz/dymension/forward ./dymensionxyz/dymension/ && \
-    \
-    # Clean up repos
-    rm -rf hyperlane-cosmos dymension && \
+    # Overlay our local dymension proto files
+    # This ensures we use our versions which may have updates
+    cp -rf /tmp/dymensionxyz_local/* dymensionxyz/ && \
+    rm -rf /tmp/dymensionxyz_local && \
     \
     # Generate protos
     buf generate --include-imports && \
+    \
+    # Clean up unnecessary generated files
     rm -rf prost/cosmos* prost/amino* prost/gogo* prost/google* \
 "]

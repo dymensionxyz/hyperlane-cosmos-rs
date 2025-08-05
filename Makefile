@@ -14,12 +14,6 @@ proto-clean: ## Clean generated protobuf files
 	cd gen && docker compose down --remove-orphans
 	@echo "Clean complete!"
 
-proto-setup: ## Setup IBC proto dependencies
-	@echo "Setting up IBC proto dependencies..."
-	cd gen && mkdir -p ibc/applications/transfer/v1
-	cd gen && cp tx.proto ibc/applications/transfer/v1/
-	cd gen && cp transfer.proto ibc/applications/transfer/v1/
-	@echo "IBC proto setup complete!"
 
 proto-verify: ## Verify that generated protos are up to date
 	@echo "Verifying protobuf files are up to date..."
@@ -31,13 +25,14 @@ proto-verify: ## Verify that generated protos are up to date
 		exit 1; \
 	fi
 
-proto-update-dymension: ## Pull latest proto definitions from dymension repo
-	@echo "Updating proto definitions from dymension repo..."
-	cd gen && rm -rf /tmp/dymension-proto-update
-	cd gen && git clone https://github.com/dymensionxyz/dymension.git /tmp/dymension-proto-update
-	cd gen && mkdir -p dymensionxyz/dymension
-	cd gen && cp -rf /tmp/dymension-proto-update/proto/dymensionxyz/dymension/kas ./dymensionxyz/dymension/
-	cd gen && cp -rf /tmp/dymension-proto-update/proto/dymensionxyz/dymension/forward ./dymensionxyz/dymension/
-	cd gen && rm -rf /tmp/dymension-proto-update
-	@echo "Proto definitions updated!"
+proto-update-forward: ## Pull latest forward proto definitions from dymension repo
+	@echo "Updating forward proto definitions from dymension repo..."
+	@if [ ! -d "../d-dymension" ]; then \
+		echo "Error: ../d-dymension directory not found. Please clone the dymension repo there."; \
+		exit 1; \
+	fi
+	@echo "Copying forward proto definitions..."
+	mkdir -p gen/dymensionxyz/dymension/forward
+	cp -rf ../d-dymension/proto/dymensionxyz/dymension/forward/*.proto gen/dymensionxyz/dymension/forward/
+	@echo "Forward proto definitions updated!"
 	@echo "Now run 'make proto-gen' to regenerate the Rust bindings."
