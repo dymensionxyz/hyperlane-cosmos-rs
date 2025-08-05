@@ -23,7 +23,7 @@ RUN apk add --no-cache git openssh-client
 
 COPY buf.gen.yaml ./
 
-COPY dymensionxyz ./dymensionxyz
+COPY dymensionxyz ./
 
 # Create a mount point for the prost directory
 VOLUME /app/prost
@@ -37,11 +37,10 @@ CMD ["/bin/sh", "-c", "\
     cp -rf hyperlane-cosmos/proto/* ./ && \
     rm -rf hyperlane-cosmos && \
 \
-    # pull hub protos
+    # pull x/kas protos
     git clone https://github.com/dymensionxyz/dymension.git && \
     mkdir -p dymensionxyz/dymension && \
     cp -rf dymension/proto/dymensionxyz/dymension/kas ./dymensionxyz/dymension/ && \
-    # Skip copying forward since we have it locally with the correct field
     rm -rf dymension && \
 \
     buf generate --include-imports && \
