@@ -51,16 +51,10 @@ message MessageIDs {
   repeated bytes message_ids = 1;
 }
 
-enum MigrationVersion {
-  MIGRATION_VERSION_UNSPECIFIED = 0;
-  MIGRATION_VERSION_1 = 1;
-}
-
-// MigrationFXG is the data structure for escrow key rotation migration.
+// MigrationFxg is the data structure for escrow key rotation migration.
 // It contains the PSKT that moves all funds from old escrow to new escrow.
+// Validators derive the expected escrow anchor locally and verify outputs
+// against their configured migration_target_address.
 message MigrationFxg {
-  MigrationVersion version = 1;
-  string pskt_bundle = 2; // hex-encoded string due to how serialization is implemented in rusty-kaspa
-  dymensionxyz.dymension.kas.TransactionOutpoint old_anchor = 3;
-  string new_escrow_address = 4;
+  string pskt_bundle = 1; // hex-encoded string due to how serialization is implemented in rusty-kaspa
 }
