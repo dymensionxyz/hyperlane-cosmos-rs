@@ -83,6 +83,23 @@ const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
             }}
+/// MigrationFxg is the data structure for escrow key rotation migration.
+/// It contains the PSKT that moves all funds from old escrow to new escrow.
+/// Validators derive the expected escrow anchor locally and verify outputs
+/// against their configured migration_target_address.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MigrationFxg {
+    /// hex-encoded string due to how serialization is implemented in rusty-kaspa
+    #[prost(string, tag="1")]
+    pub pskt_bundle: ::prost::alloc::string::String,
+}
+impl ::prost::Name for MigrationFxg {
+const NAME: &'static str = "MigrationFxg";
+const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
+            }}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum DepositVersion {
