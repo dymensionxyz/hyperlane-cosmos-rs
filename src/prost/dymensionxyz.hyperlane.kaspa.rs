@@ -83,6 +83,27 @@ const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
 fn full_name() -> ::prost::alloc::string::String {
                 ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
             }}
+/// MigrationFxg is the data structure for escrow key rotation migration.
+/// It contains the PSKT that moves all funds from old escrow to new escrow.
+#[allow(clippy::derive_partial_eq_without_eq)]
+#[derive(Clone, PartialEq, ::prost::Message)]
+pub struct MigrationFxg {
+    #[prost(enumeration="MigrationVersion", tag="1")]
+    pub version: i32,
+    /// hex-encoded string due to how serialization is implemented in rusty-kaspa
+    #[prost(string, tag="2")]
+    pub pskt_bundle: ::prost::alloc::string::String,
+    #[prost(message, optional, tag="3")]
+    pub old_anchor: ::core::option::Option<super::super::dymension::kas::TransactionOutpoint>,
+    #[prost(string, tag="4")]
+    pub new_escrow_address: ::prost::alloc::string::String,
+}
+impl ::prost::Name for MigrationFxg {
+const NAME: &'static str = "MigrationFxg";
+const PACKAGE: &'static str = "dymensionxyz.hyperlane.kaspa";
+fn full_name() -> ::prost::alloc::string::String {
+                ::prost::alloc::format!("dymensionxyz.hyperlane.kaspa.{}", Self::NAME)
+            }}
 #[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
 #[repr(i32)]
 pub enum DepositVersion {
@@ -157,6 +178,32 @@ impl ConfirmationVersion {
         match value {
             "CONFIRMATION_VERSION_UNSPECIFIED" => Some(Self::Unspecified),
             "CONFIRMATION_VERSION_1" => Some(Self::ConfirmationVersion1),
+            _ => None,
+        }
+    }
+}
+#[derive(Clone, Copy, Debug, PartialEq, Eq, Hash, PartialOrd, Ord, ::prost::Enumeration)]
+#[repr(i32)]
+pub enum MigrationVersion {
+    Unspecified = 0,
+    MigrationVersion1 = 1,
+}
+impl MigrationVersion {
+    /// String value of the enum field names used in the ProtoBuf definition.
+    ///
+    /// The values are not transformed in any way and thus are considered stable
+    /// (if the ProtoBuf definition does not change) and safe for programmatic use.
+    pub fn as_str_name(&self) -> &'static str {
+        match self {
+            MigrationVersion::Unspecified => "MIGRATION_VERSION_UNSPECIFIED",
+            MigrationVersion::MigrationVersion1 => "MIGRATION_VERSION_1",
+        }
+    }
+    /// Creates an enum from field names used in the ProtoBuf definition.
+    pub fn from_str_name(value: &str) -> ::core::option::Option<Self> {
+        match value {
+            "MIGRATION_VERSION_UNSPECIFIED" => Some(Self::Unspecified),
+            "MIGRATION_VERSION_1" => Some(Self::MigrationVersion1),
             _ => None,
         }
     }
